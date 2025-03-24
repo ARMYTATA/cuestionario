@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Sentimientos por Individuo</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Para usar Chart.js en la página -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Scripts de Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<body>
+    <h1>Análisis de Sentimientos por Individuo</h1>
+    
+    <!-- Tabla para mostrar los resultados de cada encuesta -->
+    <table id="encuestasTabla">
+        <thead>
+            <tr>
+                <th>Encuestado</th>
+                <th>Carrera</th>
+                <th>Sentimiento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí se llenarán los resultados -->
+        </tbody>
+    </table>
+
+    <div>
+        <h2>Clasificación Total por Edad, Género y Carrera</h2>
+        <canvas id="graficaClasificacion"></canvas>
+    </div>
+
+    <!-- Script principal para análisis -->
+    <script src="js/analisis.js"></script>
+</body>
+</html>

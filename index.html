@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Cuestionario de Sentimientos</title>
+</head>
+<body>
+    <h1>Cuestionario de Sentimientos</h1>
+    <form id="questionnaire">
+        <div>
+            <label>1. ¿Sientes que la escuela o universidad te brinda un propósito que te motiva a seguir adelante?</label><br>
+            <input type="radio" name="respuesta1" value="3" required> Sí, me inspira a alcanzar mis metas.<br>
+            <input type="radio" name="respuesta1" value="1"> No, siento que no tiene sentido lo que hago.<br>
+            <input type="radio" name="respuesta1" value="2"> A veces, depende del día o de la materia.<br>
+        </div>
+        <div>
+            <label>2. ¿Crees que tus logros académicos te acercan a sentirte realizado/a personalmente?</label><br>
+            <input type="radio" name="respuesta2" value="3" required> Sí, cada logro me motiva a seguir creciendo.<br>
+            <input type="radio" name="respuesta2" value="1"> No, siento que no importa lo que haga.<br>
+            <input type="radio" name="respuesta2" value="2"> No estoy seguro/a si mis logros impactan mi bienestar.<br>
+        </div>
+        <div>
+            <label>3. ¿Sientes apoyo emocional por parte de tus maestros o compañeros en momentos difíciles?</label><br>
+            <input type="radio" name="respuesta3" value="3" required> Sí, siento que puedo contar con ellos.<br>
+            <input type="radio" name="respuesta3" value="1"> No, me siento solo/a y sin apoyo.<br>
+            <input type="radio" name="respuesta3" value="2"> A veces, depende de la situación.<br>
+        </div>
+        <div>
+            <label>4. ¿Piensas que aprender cosas nuevas te ayuda a encontrar un propósito mayor?</label><br>
+            <input type="radio" name="respuesta4" value="3" required> Sí, me ayuda a crecer y entenderme mejor.<br>
+            <input type="radio" name="respuesta4" value="1"> No, siento que nada tiene sentido.<br>
+            <input type="radio" name="respuesta4" value="2"> A veces, pero no siempre encuentro sentido en ello.<br>
+        </div>
+        <div>
+            <label>5. ¿Sientes que tus estudios pueden ayudarte a dejar un impacto positivo en el mundo?</label><br>
+            <input type="radio" name="respuesta5" value="3" required> Sí, quiero hacer una diferencia.<br>
+            <input type="radio" name="respuesta5" value="1"> No, dudo que pueda cambiar algo.<br>
+            <input type="radio" name="respuesta5" value="2"> No estoy seguro/a de cómo mis estudios pueden influir.<br>
+        </div>
+        <div>
+            <label>6. ¿Percibes que tus esfuerzos académicos son valorados por los demás?</label><br>
+            <input type="radio" name="respuesta6" value="3" required> Sí, me reconocen y me motiva.<br>
+            <input type="radio" name="respuesta6" value="1"> No, siento que nadie aprecia mi esfuerzo.<br>
+            <input type="radio" name="respuesta6" value="2"> A veces siento que es reconocido, otras no.<br>
+        </div>
+        <div>
+            <label>7. ¿Consideras que tus metas profesionales están alineadas con tu deseo de trascender?</label><br>
+            <input type="radio" name="respuesta7" value="3" required> Sí, quiero que mi carrera deje huella.<br>
+            <input type="radio" name="respuesta7" value="1"> No, siento que solo sigo el camino establecido.<br>
+            <input type="radio" name="respuesta7" value="2"> No estoy seguro/a si mi carrera me llevará a trascender.<br>
+        </div>
+        <div>
+            <label>8. ¿Sientes que las dificultades académicas afectan tu deseo de seguir adelante?</label><br>
+            <input type="radio" name="respuesta8" value="3" required> No, me motivan a mejorar.<br>
+            <input type="radio" name="respuesta8" value="1"> Sí, me hacen dudar de continuar.<br>
+            <input type="radio" name="respuesta8" value="2"> Depende de la dificultad y del momento.<br>
+        </div>
+        <div>
+            <label>9. ¿Crees que involucrarte en actividades extracurriculares puede ayudarte a encontrar un propósito?</label><br>
+            <input type="radio" name="respuesta9" value="3" required> Sí, me ayuda a sentirme más conectado/a.<br>
+            <input type="radio" name="respuesta9" value="1"> No, no creo que haga mucha diferencia.<br>
+            <input type="radio" name="respuesta9" value="2"> No estoy seguro/a si eso podría ayudar.<br>
+        </div>
+        <div>
+            <label>10. ¿Sientes que hablar sobre tus emociones en un entorno académico te ayuda a liberar cargas emocionales?</label><br>
+            <input type="radio" name="respuesta10" value="3" required> Sí, me ayuda a sentirme mejor.<br>
+            <input type="radio" name="respuesta10" value="1"> No, prefiero guardarme mis sentimientos.<br>
+            <input type="radio" name="respuesta10" value="2"> Depende de la persona y la situación.<br>
+        </div>
+        <button type="submit">Enviar Cuestionario</button>
+    </form>
+
+    <div id="resultados" style="display:none;"></div>
+
+    <h2>Selecciona una carrera y especialización en UTN</h2>
+    <select id="carreras">
+        <option value="">Seleccione una opción</option>
+        <option value="ambiental">Ingeniería Ambiental y Sustentabilidad - Gestión Ambiental</option>
+        <option value="industrial">Ingeniería Industrial - Procesos Productivos</option>
+        <option value="administracion1">Administración - Emprendimiento, Formulación y Evaluación de Proyectos</option>
+        <option value="administracion2">Administración - Gestión del Capital Humano</option>
+        <option value="negocios">Negocios y Mercadotecnia - Mercadotecnia</option>
+        <option value="tecnologias1">Tecnologías de la Información e Innovación Digital - Desarrollo de Software Multiplataforma</option>
+        <option value="tecnologias2">Tecnologías de la Información e Innovación Digital - Entornos Virtuales y Negocios Digitales</option>
+        <option value="tecnologias3">Tecnologías de la Información e Innovación Digital - Infraestructura de Redes Digitales</option>
+        <option value="mecatronica">Ingeniería Mecatrónica - Sistemas de Manufactura Flexible</option>
+        <option value="aeronautica">Ingeniería Aeronáutica en Mantenimiento - Mantenimiento de Sistemas Electrónicos de las Aeronaves</option>
+    </select>
+
+    <!-- Botones para ir a las páginas de análisis y resultados -->
+    <div>
+        <button onclick="window.location.href='analisis.html'">Ver Análisis de Sentimientos</button>
+        <button onclick="window.location.href='resultados.html'">Ver Resultados</button>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
